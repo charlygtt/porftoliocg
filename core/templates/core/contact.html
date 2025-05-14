@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contactos</title>
+</head>
+<body>
+
+{% block content %}
+
+<p class="contactcoment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse, 
+    nobis suscipit neque blanditiis facere similique quia! Est excepturi voluptate, 
+    dicta quaerat iure quod ipsum exercitationem non enim libero dolore modi.</p>
+    <ul class="contactflex">
+        <a class="contactflex__item" href="https://www.linkedin.com/in/carlos-alfredo-garavetti-77b593316" target="_blank">
+            <i class="bi bi-linkedin" style="font-size: 50px; color: #a4a4a4"></i>
+        </a>
+        <a class="contactflex__item" href="https://github.com/charlygtt" target="_blank">
+            <i class="bi bi-github" style="font-size: 50px; color: #a4a4a4"></i>  
+        <a class="contactflex__item" href="tel:+543624279236">
+            <i class="bi bi-whatsapp" style="font-size: 50px; color: #a4a4a4" alt="whatsapp"></i>
+        </a>
+        <a class="contactflex__item" href="mailto:charlesttta@gmail.com">
+            <i class="bi bi-envelope-at-fill" style="font-size: 50px; color: #a4a4a4" alt="mail"></i>
+        </a>
+    </ul>
+{% endblock %}
+</body>
+</html>
