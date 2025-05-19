@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos</title>
+</head>
+<body>
+    {% block content %}
+    {% for project in projects %}
+
+        <div class="rowproject" aria-label="Proyectos">   
+
+            <div class="rowproject__content" aria-label="contenedor de imagen de muestra">
+                <img class="rowproject__content--img" src="{{project.image.url}}" alt="imagen de muestra">
+            </div>
+
+            <div class="rowproject__content">
+                <h2 class="rowproject__content--title" aria-label="Titulo del proyecto">{{project.title}}</h2>   
+                <p aria-label="Descripción del proyecto">{{project.description}}</p>
+                
+                {% if project.link %}
+                <p class="rowproject__content--link"><a href="{{project.link}}" aria-label="link al github del proyecto ">Más información</a></p>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
+

@@ -1,10 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title >Portafolio</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
@@ -17,47 +17,67 @@
     
 </head>
 <body class="body">
-    <div class="box">
+    <div class="box" >
         <header>
-            <ul class="headeritem">
-                <img class="headeritem__logo" src="{% static 'core/img/logo.png' %}" alt="logo">
-                <h1 class="headeritem__title">Carlos Garavetti</h1>
-                <a href="https://www.google.com"><button class="headeritem__buttom" ><p>X</p></butom></a>
+            <ul class="headeritem" aria-label="Encabezado, ventana completa del portafolio. Esto es un portafolio inspirado en el menu de Counter-strike 1.6">
+                <img class="headeritem__logo" src="{% static 'core/img/logo.png' %}" alt="logo de una canilla">
+                <h1 class="headeritem__title" aria-label="Titulo principal">Carlos Garavetti</h1>
+                <button class="headeritem__buttom" aria-label="Botón Salir"><a href="https://www.google.com">X</a></butom>
             </ul>
         </header>    
 
-        <nav class="nav">
-            <ul class="contlist">
-                <li class="contlist__item"><a href="{% url 'about' %}">Acerca de</a></li>
-                <li class="contlist__item"><a href="{% url 'skills' %}">Skills</a></li>
-                <li class="contlist__item"><a href="{% url 'projects' %}">Proyectos</a></li>
-                <li class="contlist__item"><a href="{% url 'estudiando' %}">Estudiando</a></li>
-                <li class="contlist__item"><a href="{% url 'contact' %}">Contacto</a></li>
+        <nav class="nav" aria-label="Navegacion">
+            <ul class="contlist" aria-label="Lista de Navegacion">
+                <li class="contlist__item"><a href="{% url 'about' %}" aria-label="Conoce un poco sobre mi">Acerca de</a></li>
+                <li class="contlist__item"><a href="{% url 'skills' %}" aria-label="Habilidades">Skills</a></li>
+                <li class="contlist__item"><a href="{% url 'projects' %}" aria-label="Proyectos">Proyectos</a></li>
+                <li class="contlist__item"><a href="{% url 'estudiando' %}" ara-lavel="En este momento estoy estudiando">Estudiando</a></li>
+                <li class="contlist__item"><a href="{% url 'contact' %}" aria-label="Contactame">Contacto</a></li>
             </ul>
         </nav>    
         
-        <main class="main">
+        <main class="main" aria-label="Contenido principal">
             <div class="main__content">
                 <div class="textoverflow__text">
                 {% block content %}
                 {% endblock %}
                 </div>
             </div>
-            <ul class="main__buttons">
-                <a href="{% static 'core/doc/CV.pdf' %}" download><button class="main__buttons--button">Descarga CV</button></a>
-                <button class="main__buttons--button">Animaciones</button>
-                <button class="main__buttons--button--backSound">🔇</button>
+            <ul class="main__buttons" aria-label="Botones secundarios">
+                <button class="main__buttons--button" aria-label="Dscargar Curriculum Vitae"><a href="{% static 'core/doc/CV.pdf' %}" download></a>Descarga CV</button>
+                <button class="main__buttons--button" aria-label="Botón vacío">Sin uso</button>
+                <button class="main__buttons--button--backSound" aria-label="Activar y desactivar música">🔇</button>
             </ul>
         </main>
     </div>
 
+    <footer>
+        <div class="navmenu" aria-label="Menú secundario replica de navegación">
+            <ul class="menu__contlist">
+                <li class="menu__contlist__item"><a href="{% url 'about' %}" aria-label="Conoce un poco sobre mi">Acerca de</a></li>
+                <li class="menu__contlist__item"><a href="{% url 'estudiando' %}" ara-lavel="En este momento estoy estudiando">Estudiando</a></li>
+                <li class="menu__contlist__item"><a href="{% url 'projects' %}" aria-label="Proyectos">Proyectos</a></li>
+                <li class="menu__contlist__item"><a href="{% url 'contact' %}" aria-label="Contactame">Contacto</a></li>
+                <li class="menu__contlist__item"><a href="{% url 'skills' %}" aria-label="Habilidades">Skills</a></li>
+            </ul>
+        </div>
+
+        <div class="ping" aria-label="Animación de fps ">
+            <div class=" ping__fps">
+                <p id="fps">120 fps</p>
+                <p>in: 0 0.00 k/s</p>
+                <p>out: 0 0.00 k/s</p>
+                <p>loss: 0 choke: 0</p>
+            </div>
+        </div>
+    </footer>
 </body>
 
 <script>
     const hoverSound = document.getElementById('hover-sound');
     const clickSound = document.getElementById('click-sound');
 
-    document.querySelectorAll('.main__buttons--button, .box__class-bar--play, .bi, .contlist__item, .headeritem__buttom, .main__buttons--button--backSound ').forEach(elem => {
+    document.querySelectorAll('.main__buttons--button, .box__class-bar--play, .bi,.menu__contlist__item, .contlist__item, .headeritem__buttom, .main__buttons--button--backSound ').forEach(elem => {
     elem.addEventListener('mouseenter', () => {
         hoverSound.currentTime = 0;
         hoverSound.play();
@@ -86,7 +106,15 @@
     }
     isPlaying = !isPlaying;
     });
+    
+    /** FPS ANIMATION **/
 
+    function startFPSCounter() {
+        const fpsEl = document.getElementById("fps");
+        setInterval(() => {
+        const fps = Math.random() > 0.1 ? 119 : 120; fpsEl.textContent = `${fps} fps`;}, 100); 
+}
+startFPSCounter();
 </script>
 
 </html>
